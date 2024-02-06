@@ -12,6 +12,8 @@ const app = express();
 // Middleware to parse JSON bodies, with a limit of 50MB
 app.use(bodyParser.json({ limit: '50mb' }));
 
+app.use('/imports', express.static(path.join(__dirname, 'imports')));
+
 app.post('/webhook', async (req, res) => {
   const { records, import_slug } = req.body;
 
