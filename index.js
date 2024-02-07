@@ -17,11 +17,12 @@ app.use('/imports', express.static(path.join(__dirname, 'imports')));
 app.post('/webhook', async (req, res) => {
   const { records, import_slug } = req.body;
 
-  // Validate presence of records and import_slug
-  if (!Array.isArray(records) || records.length === 0 || !import_slug) {
-      return res.status(400).send({ message: 'No records to process or missing import_slug' });
-  }
 
+
+  if(records.length === 0 && req.complete) {
+    return
+  }
+  
   const dir = path.join(__dirname, 'imports', import_slug); // Adjust path as needed
 
   // Ensure the directory exists
@@ -65,7 +66,7 @@ app.post('/webhook', async (req, res) => {
 
 
 // Start the server on the specified PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

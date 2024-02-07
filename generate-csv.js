@@ -1,7 +1,7 @@
 const { createObjectCsvWriter } = require('csv-writer');
 
 const csvWriter = createObjectCsvWriter({
-    path: 'output.csv',
+    path: 'csv-output/output.csv',
     header: [
         {id: 'id', title: 'ID'},
         {id: 'first_name', title: 'FIRST_NAME'},
@@ -41,7 +41,7 @@ function randomSalary() {
 
 const generateData = () => {
     const data = [];
-    for (let i = 1; i <= 1000000; i++) {
+    for (let i = 1; i <= 2000; i++) {
         data.push({
             id: i,
             first_name: randomString(7),

@@ -13,6 +13,7 @@ yarn-error.log*
 
 # Directory for dynamically created CSV files
 /imports/
+/csv-output/
 
 # Optional npm cache directory
 .npm
